@@ -31,7 +31,8 @@
         <div class="flex items-center gap-1">
           {{ partial "features/icon.html" (dict "name" "calendar" "size" "xs" "ariaLabel" (i18n "post.published_on")) }}
           <time datetime="{{ $page.Date.Format "2006-01-02" }}">
-            {{ $page.Date.Format (i18n "time.date_format_short" | default "01月02日") }}
+            {{ $months := dict "January" "enero" "February" "febrero" "March" "marzo" "April" "abril" "May" "mayo" "June" "junio" "July" "julio" "August" "agosto" "September" "septiembre" "October" "octubre" "November" "noviembre" "December" "diciembre" }}
+            {{ $page.Date.Day }} de {{ index $months ($page.Date.Format "January") }}
           </time>
         </div>
       {{ end }}
@@ -52,7 +53,8 @@
         <div class="bg-muted/50 border-muted/30 flex items-center gap-1.5 rounded-md border px-2 py-1">
           {{ partial "features/icon.html" (dict "name" "calendar" "size" "sm" "ariaLabel" (i18n "post.published_on")) }}
           <time datetime="{{ $page.Date.Format "2006-01-02" }}" class="text-sm font-medium">
-            {{ $page.Date.Format (i18n "time.date_format" | default "2006年01月02日") }}
+            {{ $months := dict "January" "enero" "February" "febrero" "March" "marzo" "April" "abril" "May" "mayo" "June" "junio" "July" "julio" "August" "agosto" "September" "septiembre" "October" "octubre" "November" "noviembre" "December" "diciembre" }}
+            {{ $page.Date.Day }} de {{ index $months ($page.Date.Format "January") }} de {{ $page.Date.Year }}
           </time>
         </div>
       {{ end }}

@@ -1,20 +1,8 @@
-{{/* 文章卡片组件 - 附件风格设计
-
-  Cover 在右侧作为装饰，不影响左侧内容展示
-
-  @context {page} . 文章页面对象
-*/}}
-
-{{/* 使用重新设计的统一卡片组件 - 水平布局，激进精简 */}}
-{{ partial "content/card-base.html" (dict
-  "page" .
-  "type" "main"
-  "config" (dict
-    "layout" "horizontal"
-    "showSummary" true
-    "summaryLength" 160
-    "showDate" true
-    "showReadingTime" true
-    "imageType" "main"
-  )
-) }}
+{{/* 文章卡片组件 - 附件风格设计 Cover 在右侧作为装饰，不影响左侧内容展示
+@context {page} .page 文章页面对象 @context {bool} .priority
+是否为优先加载的图片 */}} {{ $page := .page | default . }} {{ $priority :=
+.priority | default false }} {{/* 使用重新设计的统一卡片组件 -
+水平布局，激进精简 */}} {{ partial "content/card-base.html" (dict "page" $page
+"type" "main" "priority" $priority "config" (dict "layout" "horizontal"
+"showSummary" true "summaryLength" 160 "showDate" true "showReadingTime" true
+"imageType" "main" ) ) }}
